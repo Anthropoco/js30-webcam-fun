@@ -48,8 +48,30 @@
     <audio src="boom.wav"></audio>
     <button>Take Picture</button>
 
+    <script>
+        const video = document.querySelector('video');
+        const canvas = document.querySelector('canvas');
+        const ctx = canvas.getContext('2d');
+        const filmStrip = document.querySelector('.strip');
+        const audio = document.querySelector('audio');
+        const button = document.querySelector('button');
 
+        function snap(e) {
 
+        }
+
+        function drawOnCanvas(e) {
+            setInterval(draw, 50);
+
+            function draw() {
+
+            }
+        }
+
+        /*hookup listeners*/
+        video.addEventListener('canplay', drawOnCanvas);
+        button.addEventListener('click', snap);
+    </script>
 </body>
 
 </html>
