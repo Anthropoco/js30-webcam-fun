@@ -74,9 +74,17 @@
         }
 
         function drawOnCanvas(e) {
-            setInterval(draw, 50);
+            console.dir(e.currentTarget);
+            setInterval(draw, 500);
 
-            function draw() {
+            function draw(e) {
+                //get image from video
+                ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+                //transform image to look like channel split
+                let pixels = ctx.getImageData(0, 0, canvas.width, canvas.height);
+console.dir(pixels);
+                //draw channel split image to canvas
 
             }
         }
