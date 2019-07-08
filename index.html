@@ -73,23 +73,33 @@
 
         }
 
-        function drawOnCanvas(e) {
-            console.dir(e.currentTarget);
-            setInterval(draw, 500);
+        //get frame from webcam
 
-            function draw(e) {
-                //get image from video
-                ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+        //create effects with frame
 
-                //transform image to look like channel split
-                let pixels = ctx.getImageData(0, 0, canvas.width, canvas.height);
-console.dir(pixels);
-                //draw channel split image to canvas
+        //paint effected image to canvas
 
-            }
-        }
+        //repeat above three every so seconds
+function drawOnCanvas(e){
+//get videostream from webcam
+window.navigator.getUserMedia({video: 'yes'}, (videoStream)=>{ video.src = videoStream.toDataURL('video/mp4') }, console.log);
+
+//show live video from webcam
+//let video.src = videoStream.toDataUrl
+
+    //get frame from webcam
+    //const video
+    
+
+    //create effects with frame
+     
+    //paint effected image to canvas
+
+
+}
 
         /*hookup listeners*/
+        document.addEventListener('click', drawOnCanvas);
         video.addEventListener('canplay', drawOnCanvas);
         button.addEventListener('click', snap);
     </script>
