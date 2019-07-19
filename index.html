@@ -40,9 +40,18 @@
             bottom: 0;
         }
         
-        .strip li {
+        .strip img {
             padding: 5px;
             background-color: blueviolet;
+            width: 100px;
+        }
+        
+        .strip img:nth-of-type(odd) {
+            transform: translate(0, 30px) rotate(30deg);
+        }
+        
+        .strip img:nth-of-type(even) {
+            transform: translate(0, 30px) rotate(-25deg);
         }
         
         button {
