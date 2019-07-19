@@ -105,6 +105,22 @@
             //draw to normal image to canvas first
             ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
 
+            //get pixels from canvas image
+            let pixels = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            //create effects with pixels
+            pixels = splitEffect(pixels);
+            //draw effected pixels back to canvas
+            ctx.putImageData(pixels, 0, 0);
+        }
+
+        function splitEffect(pixels) {
+            console.log(pixels);
+            for (let i = 0; i <= pixels.data.length; i = i + 4) {
+                pixels.data[i] = pixels.data[i + 4]
+                pixels.data[i + 1] = pixels.data[i - 30];
+                pixels.data[i + 2] = pixels.data[i * 3];
+            }
+            return pixels;
         }
 
         /*hookup listeners*/
@@ -118,4 +134,4 @@
     </script>
 </body>
 
-</html>
+</html>0
