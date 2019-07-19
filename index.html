@@ -55,7 +55,7 @@
 </head>
 
 <body>
-    <video></video>
+    <video autoplay height="300px" width="400"></video>
     <canvas></canvas>
     <button>Take Picture</button>
     <div class="strip"></div>
@@ -80,28 +80,31 @@
         //paint effected image to canvas
 
         //repeat above three every so seconds
-function drawOnCanvas(e){
-//get videostream from webcam
-window.navigator.getUserMedia({video: 'yes'}, (videoStream)=>{ video.src = videoStream.toDataURL('video/mp4') }, console.log);
+        function playVideoStream(e) {
+            //get videostream from webcam
+            window.navigator.mediaDevices.getUserMedia({
+                    video: true
+                })
+                .then((videoStream) => {
+                    //show live video from webcam
+                    video.srcObject = videoStream;
+                    // video.play();
+                })
+                .catch(console.log);
 
-//show live video from webcam
-//let video.src = videoStream.toDataUrl
+            //draw to canvas
+            // ctx.drawImage(video);
+            //create effects with frame
 
-    //get frame from webcam
-    //const video
-    
+            //paint effected image to canvas
 
-    //create effects with frame
-     
-    //paint effected image to canvas
-
-
-}
+        }
 
         /*hookup listeners*/
-        document.addEventListener('click', drawOnCanvas);
-        video.addEventListener('canplay', drawOnCanvas);
+        // document.addEventListener('click', drawOnCanvas);
+        // video.addEventListener('canplay', drawOnCanvas);
         button.addEventListener('click', snap);
+        playVideoStream();
     </script>
 </body>
 
