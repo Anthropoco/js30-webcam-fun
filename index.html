@@ -19,6 +19,9 @@
         
         canvas {
             height: 70vh;
+            width: 90vh;
+            display: block;
+            margin: 0 auto;
         }
         
         video {
@@ -92,18 +95,25 @@
                 })
                 .catch(console.log);
 
-            //draw to canvas
-            // ctx.drawImage(video);
             //create effects with frame
 
             //paint effected image to canvas
 
         }
 
+        function drawToCanvas() {
+            //draw to normal image to canvas first
+            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+        }
+
         /*hookup listeners*/
         // document.addEventListener('click', drawOnCanvas);
-        // video.addEventListener('canplay', drawOnCanvas);
         button.addEventListener('click', snap);
+
+        //start drawing to canvas once video starts playing
+        video.addEventListener('canplay', drawToCanvas);
+        //get user webcam video stream and play in video element
         playVideoStream();
     </script>
 </body>
