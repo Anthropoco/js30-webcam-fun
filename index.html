@@ -135,6 +135,17 @@
             return pixels;
         }
 
+        function snap(e) {
+            //create new image element
+            const image = document.createElement('img');
+
+            //assign the current canvas image to it
+            image.src = canvas.toDataURL('image/jpeg');
+
+            //append to dom
+            filmStrip.append(image);
+        }
+
         /*hookup listeners*/
         // document.addEventListener('click', drawOnCanvas);
         button.addEventListener('click', snap);
